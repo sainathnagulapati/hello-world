@@ -1,0 +1,36 @@
+mov r0,0
+mov r1,0
+mov r2,1
+mov r3,1
+mov r4,1
+mov r5,0
+mov r6,0
+mov r7,0
+.loop1:
+mov r5,0
+add r0,r0,1
+mov r1,0
+.loop2:
+add r1,r1,1
+mul r3,r1,r1
+mul r3,r1,r3
+add r2,r1,1
+cmp r3,r0
+bgt.loop1
+.loop3:
+add r2,r2,1
+mul r4,r2,r2
+mul r4,r2,r4
+cmp r4,r0
+bgt.loop2
+add r6,r4,r3
+cmp r6,r0
+beq.label1
+b.loop3
+.label1:
+add r5,r5,1
+cmp r5,2
+beq.label2
+b.loop3
+.label2:
+mov r7,r0
